@@ -4,5 +4,5 @@ src/__pycache__/
 Scripts
 *.txt
 *.cfg
-*.pl~
-*.json
+prologtt2016.pl~
+package-lock.json

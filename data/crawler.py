@@ -12,10 +12,10 @@ from datetime import date
 class crawler:
     def __init__(self):
         self.conn = mysql.connector.connect(
-        host="127.0.0.1",
-        port=3308,
-        user="root",
-        password="",
+        host="labando.com",
+        port=3306,
+        user="twoman",
+        password="@Twoman123456",
         database = "covidinfomation")
         self.cur = self.conn.cursor()
         # self.vietnamstatistic()

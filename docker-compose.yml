@@ -5,4 +5,4 @@ services:
     ports:
       - "5000:5000"
   swipl:
-    image: "docker-swipl"
+    image: "swipl"

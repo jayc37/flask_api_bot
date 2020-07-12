@@ -19,8 +19,11 @@ class chartbig1():
         self.format_data()
     def getdata(self):
         try:
-            conn = mysql.connector.connect(host='localhost',port = '3308',
-                         user="root", passwd="", database="covidinfomation")
+            conn = mysql.connector.connect(host="labando.com",
+        port=3306,
+        user="twoman",
+        password="@Twoman123456",
+        database = "covidinfomation")
             cur = conn.cursor()
             cur.callproc('proce_gettotalchar12country',[])
             for result in cur.stored_results():

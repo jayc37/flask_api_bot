@@ -90,8 +90,11 @@ class check_sw():
 
     def getdata(self,args_data):
         try:
-            conn = mysql.connector.connect(host='localhost',port = '3308',
-                         user="root", passwd="", database="covidinfomation")
+            conn = mysql.connector.connect(host="labando.com",
+        port=3306,
+        user="twoman",
+        password="@Twoman123456",
+        database = "covidinfomation")
             cur = conn.cursor()
             if args_data['root'] == 'thongkevn':
                 value = [args_data['elements']['cities']]
@@ -130,6 +133,6 @@ class check_sw():
         self.writeonfile(stringgs)
 check_sw(str(sys.argv[1]))
 # a = 'cho,toi,du,lieu,benh,nhan,nam,da,xuat,vien'
-# # a = 'cho,toi,du,lieu,benh,nhan,20,tuoi'
+# a = 'cho,toi,du,lieu,benh,nhan,20,tuoi'
 # # # # # a = 'hello'
 # check_sw(a)

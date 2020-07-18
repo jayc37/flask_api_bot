@@ -29,6 +29,7 @@ def home():
 def get_bot_response():
     userText = str(request.args.get('data'))
     message_chatbot = handle_response_code(userText)
+    logging.error(type(message_chatbot))
     return message_chatbot
 if __name__ == "__main__":
   app.run(port=8000)

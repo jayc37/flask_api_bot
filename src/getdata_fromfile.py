@@ -8,7 +8,7 @@ from pyswip import Prolog
 import os
 
 def check_sw(message):
-    os.system('python src/prolog_processor.py ' + message)
+    os.system('python3 src/prolog_processor.py ' + message)
 
 def get_response():
     f = open('tempProlog', 'r', encoding="utf-8")

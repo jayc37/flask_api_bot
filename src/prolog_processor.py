@@ -36,7 +36,7 @@ class check_sw():
                 else:
                     self.call_dataserverthongke(args)
             else:
-                message = 'hệ thống chưa nhận diện được câu hỏi'
+                message = 'Không hiểu.'
                 self.writeonfile(message)
         except Exception as e:
             logging.error('<check_sw>' + str(e))
@@ -77,9 +77,8 @@ class check_sw():
                 pass
         if args['root'] == 'patients':
             resp = self.getdata(args)
-            # stin = 'BN - TÌNH TRẠNG - TUỔI - GT - ĐANG ĐIỀU TRỊ TẠI  - TP PHÁT HIỆN NHIỂM\n'
-            stin = '\n'
-            string = self.getstring(resp,'')
+            header = 'BỆNH NHÂN, TÌNH TRẠNG, TUỔI,GIỚI TÍNH,BV ĐIỀU TRỊ, NƠI PHÁT HIỆN\n'
+            string = self.getstring(resp,header)
             self.writeonfile(string)
         else:
             response = 'OK'
@@ -107,15 +106,18 @@ class check_sw():
                 cur.callproc('proc_getbenhnhan',args_data)
             for result in cur.stored_results():
                 message = result.fetchall()
+                logging.error('message type')
+                logging.error(type(message))
+                logging.error(message)
         except mysql.connector.Error as error:
                         print("Failed to execute stored procedure: {}".format(error))
         return message
-    def getstring(self,string,stin):
+    def getstring(self,string,header):
         string = '\n'.join(str(x) for x in string)
         stringg = string.replace('(','')
         stringg = stringg.replace(')','')
         stringg = stringg.replace("'","")
-        stringg = stin + stringg
+        stringg = header+stringg
         return stringg
     def writeonfile(self,stringg):
         with open('tempProlog', 'w', encoding="utf-8") as f:
@@ -129,10 +131,26 @@ class check_sw():
             a = args['elements']['quocgia']
             args['elements']['quocgia'] = '%'+a+'%'
         message = self.getdata(args)
-        stringgs = self.getstring(message,'')
+        logging.error('prolog_processor')
+        logging.error(message)
+        message = self.clean_message(message)
+        header = 'Name,Cases,Death,Recover,Treating,Dangerous\n'
+        stringgs = self.getstring(message,header)
         self.writeonfile(stringgs)
+    
+    def clean_message(self,message):
+        print(message)
+        new_message = []  
+        for i in range(len(message[0])):
+          x = message[0][i].replace(',','.')
+          new_message.append(x)
+        message.clear()
+        message.append(tuple(new_message))
+        print(message)
+        return message
+
 check_sw(str(sys.argv[1]))
-# a = 'cho,toi,du,lieu,benh,nhan,nam,da,xuat,vien'
-# a = 'cho,toi,du,lieu,benh,nhan,20,tuoi'
-# # # # # a = 'hello'
+# a = 'danh,sach,benh,nhan,nam,da,xuat,vien'
+# a = 'the,gioi,co,bao,nhieu,ca'
+# # # a = 'hello'
 # check_sw(a)

@@ -3,11 +3,8 @@ class datatable:
     def __init__(self,data):
         self.data = data
         self.colections = []
-        self.cardinality_filtered = None
-        self.cardinality = None
         self.dataformat = None
         self.format_datarow()
-        self.run_queries()
         self.get_datarow()
     def format_datarow(self):
         dab = self.data
@@ -26,9 +23,4 @@ class datatable:
             idab = self.dataformat[i]
             arr.append(idab)
         output['aaData'] = arr
-
-        print(output)
         return output
-    def run_queries(self):
-         self.cardinality_filtered = len(self.dataformat)
-         self.cardinality = len(self.dataformat)

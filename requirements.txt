@@ -10,5 +10,5 @@ gunicorn
 python-dotenv
 pyswip==0.2.9
 pyvi
-mysql-connector
+mysql-connector-python
 requests

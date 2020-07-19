@@ -19,14 +19,21 @@ query(patients(Obj,Sex,Dotuoi,Benhvien)) -->noun_n,object_n(Obj),sexual(Sex),dot
 query(patients(Obj,Sex,Dotuoi,Benhvien)) -->noun_n,object_n(Obj),noichon,benhvien(Benhvien),co,gtinh,sexual(Sex),dotuoi(Dotuoi),age_b.
 
 query(patients(Obj,Sex,Tp)) -->w_x,noun_n,object_n(Obj),sexual(Sex),noichon,thanhpho(Tp).
+query(patients(Obj,Sex,Tp)) -->noun_n,object_n(Obj),sexual(Sex),noichon,thanhpho(Tp).
 
 query(patients(Obj,Sex,Tinhtrang)) -->w_x,noun_n,object_n(Obj),sexual(Sex),tt(Tinhtrang).
+query(patients(Obj,Sex,Tinhtrang)) -->noun_n,object_n(Obj),sexual(Sex),tt(Tinhtrang).
+
 query(patients(Obj,Sex,Tinhtrang,Tp)) -->w_x,noun_n,object_n(Obj),sexual(Sex),tt(Tinhtrang),noichon,thanhpho(Tp).
 
 query(patients(Obj,Tp)) -->w_x,noun_n,object_n(Obj),noichon,thanhpho(Tp).
 
 query(patients(Obj,Tp,Tinhtrang)) -->w_x,noun_n,object_n(Obj),noichon,thanhpho(Tp),tt(Tinhtrang).
+query(patients(Obj,Tp,Tinhtrang)) -->noun_n,object_n(Obj),noichon,thanhpho(Tp),tt(Tinhtrang).
+
 query(patients(Obj,Tp,Time)) -->w_x,noun_n,object_n(Obj),noichon,thanhpho(Tp),tg(Time).
+query(patients(Obj,Tp,Time)) -->noun_n,object_n(Obj),noichon,thanhpho(Tp),tg(Time).
+
 query(patients(Obj,Tp,Time,Tinhtrang)) -->w_x,noun_n,object_n(Obj),noichon,thanhpho(Tp),tg(Time),tt(Tinhtrang).
 query(patients(Obj,Tinhtrang)) -->w_x,noun_n,object_n(Obj),tt(Tinhtrang).
 query(patients(Obj,Tinhtrang,Benhvien)) -->w_x,noun_n,object_n(Obj),tt(Tinhtrang),noichon,benhvien_n,benhvien(Benhvien).
@@ -35,12 +42,24 @@ query(patients(Obj,Dotuoi)) -->w_x,noun_n,object_n(Obj),dotuoi(Dotuoi),age_b.
 query(patients(Obj,Dotuoi,Tp)) -->w_x,noun_n,object_n(Obj),dotuoi(Dotuoi),age_b,noichon,thanhpho(Tp).
 query(patients(Obj,Dotuoi,Sex,Tp)) -->w_x,noun_n,object_n(Obj),sexual(Sex),dotuoi(Dotuoi),age_b,noichon,thanhpho(Tp).
 query(patients(Obj,Time)) -->w_x,noun_n,object_n(Obj),tg(Time).
-query(patients(Obj,Idbn)) -->w_x,noun_n,object_n(Obj),idbn(Idbn).
+query(patients(Obj,Idbn)) -->object_n(Obj),idbn(Idbn).
 idbn(patients(Idbn,Ask)) --> ask(Ask),sohuu,noun_n,id_bn(Idbn).
 query(thongkevn(Obj,Tp)) --> w_x,noun_n,object_n(Obj),nguoinhiem,noichon,thanhpho(Tp).
 query(thongketg(Obj,Qg)) --> w_x,noun_n,object_n(Obj),nguoinhiem,noichon,qg(Qg).
 query(thongkevn(Obj,Tp)) --> noichon,thanhpho(Tp),howmany,object_n(Obj).
 query(thongketg(Obj,Qg)) --> noichon,qg(Qg),howmany,object_n(Obj).
+query(thongketg(Obj,Qg)) --> qg(Qg),howmany,howmany,object_n(Obj).
+query(thongketg(Obj,Qg)) --> qg(Qg),howmany,howmany,howmany,object_n(Obj).
+query(thongketg(Obj,Qg)) --> noichon,qg(Qg),howmany,howmany,object_n(Obj).
+query(thongketg(Obj,Qg)) --> noichon,qg(Qg),howmany,howmany,howmany,object_n(Obj).
+query(thongketg(Obj,Qg)) --> qg(Qg),howmany,object_n(Obj).
+query(thongketg(Obj,Qg)) --> qg(Qg),howmany,howmany,object_n(Obj),howmany.
+
+query(thongketg(Obj,Qg)) --> howmany,howmany,object_n(Obj),noichon,qg(Qg).
+query(thongketg(Obj,Qg)) --> howmany,object_n(Obj),noichon,qg(Qg).
+
+query(thongketg(Obj,Qg)) --> howmany,howmany,howmany,object_n(Obj),noichon,qg(Qg).
+
 ask(chitiet(Ask)) --> ask_ask(Ask).
 ask_ask(ref) --> [nguon,goc,nhiem,benh].
 ask_ask(tinhtrang) --> [tinh,trang].
@@ -403,6 +422,9 @@ tinh_trang(dangdieutri) --> [dang,dieu,tri].
 thanhpho(cities(Tp)) --> city(Tp).
 city(ni0) -->[ha,noi].
 city(minh1) -->[tp,ho,chi,minh].
+city(minh1) -->[ho,chi,minh].
+city(minh1) -->[hcm].
+
 city(bnh2) -->[thai,binh].
 city(liu3) -->[bac,lieu].
 city(phc4) -->[vinh,phuc].
@@ -485,6 +507,8 @@ country(suriname158)-->[suriname].
 country(myanmar157)-->[myanmar].
 country(montenegro156)-->[montenegro].
 country(vietnam155)-->[vietnam].
+country(vietnam155)-->[viet,nam].
+
 country(man154)-->[isle,of,man].
 country(mauritius153)-->[mauritius].
 country(zimbabwe152)-->[zimbabwe].
@@ -640,6 +664,7 @@ country(russia3)-->[russia].
 country(brazil2)-->[brazil].
 country(usa1)-->[usa].
 country(world0)-->[world].
+country(world0)-->[the,gioi].
 country(zaandam206)-->[ms,zaandam].
 country(sahara207)-->[western,sahara].
 country(islands208)-->[british,virgin,islands].
@@ -814,13 +839,21 @@ n --> [danh,sach].
 gioitinh --> [gioi,tinh].
 object_n(objects(Obj)) --> objs(Obj).
 objs(dlbn) --> [benh,nhan].
+objs(dlbn) --> [thong,tin].
+
 objs(dltk) --> [thong,ke].
 objs(dltk) --> [ca].
+objs(dltk) --> [ca,nhiem].
+objs(dltk) --> [ca,nhiem,covid19].
 objs(dltk) --> [truong,hop].
+objs(dltk) --> [truong,hop,nhiem].
 
-
-
-howmany --> [co,bao,nhieu].
+objs(dltk) --> [truong,hop,nhiem,covid19].
+howmany --> [so].
+howmany --> [co].
+howmany --> [bao,nhieu].
+howmany -->[tong,cong].
+howmany -->[tong].
 sexual(gioitinh(Sex)) --> gioi_tinh(Sex).
 gioi_tinh(nam) --> [nam].
 gioi_tinh(nu) --> [nu].
@@ -833,11 +866,13 @@ w -->[cho,toi,biet].
 w -->[cho,biet].
 w -->[cho,hoi].
 w -->[cho,toi].
+w -->[thong,tin].
 bongu --> b.
 b --> [tu].
 b --> [den].
 noichon --> [o].
 noichon --> [tai].
+noichon --> [tren].
 why --> [tai,sao].
 sohuu -->[cua].
 nguoinhiem --> nguoi,nhiem.

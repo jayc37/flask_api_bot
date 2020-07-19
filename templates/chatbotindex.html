@@ -1,0 +1,79 @@
+<!--
+
+Follow me on
+Dribbble: https://dribbble.com/supahfunk
+Twitter: https://twitter.com/supahfunk
+Codepen: https://codepen.io/supah/
+
+It's just a concept, a fake chat to design a new daily UI for direct messaging.
+Hope you like it :)
+
+-->
+
+<div class="chat">
+    <div class="chat-title">
+      <h1>Fabio Ottaviani</h1>
+      <h2>Supah</h2>
+      <figure class="avatar">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>
+    </div>
+    <div class="messages">
+      <div class="messages-content"></div>
+    </div>
+    <div class="message-box">
+      <textarea id = "textInput" type="text" class="message-input" name = "data" placeholder="Type message..."></textarea>
+      <button id="buttonInput" type="submit" class="message-submit">Send</button>
+    </div> 
+    <script>
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<ul><p class="userText"><span>' + rawText + '</span></p></ul>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          $.get("/getdata", { data: rawText }).done(function(data) {
+                var ar = [];
+                var botHtml = '';
+                for(var m in data) {
+                    var u = data[m];
+                  ar.push(u);
+                  };
+                if (typeof(data) != 'string'){
+                    var strings = '';
+                    for (var i=0;i<ar.length;i++){
+                        var stringss = '<tr>';
+                        arr = ar[i];
+                        for (var j = 0;j <arr.length;j ++){
+                            for (var cc = 0; cc < arr[j].length; cc++){
+                                var str = '<th>'+ arr[j][cc] + '</th>';
+                                stringss =  stringss.concat(str);
+                            }
+                        stringss = stringss.concat('</tr>');
+                        };
+                        strings = strings.concat(stringss);
+                    };
+                  botHtml = '<table class="table" ><tbody>' + strings + '</tbody></table>';
+
+                  }
+                else{
+                 botHtml = '<ul><p class="botText"><span>' + data + '</span></p></ul>';
+
+                }
+            $("#chatbox").append(botHtml);
+            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          });
+        }
+        $("#textInput").keypress(function(e) {
+            if ((e.which == 13) && document.getElementById("textInput").value != "" ){
+                getBotResponse();
+            }
+        });
+        $("#buttonInput").click(function() {
+            if (document.getElementById("textInput").value != "") {
+                getBotResponse();
+            }
+            
+        })
+      </script>
+  </div>
+  <div class="bg"></div>

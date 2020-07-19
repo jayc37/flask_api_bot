@@ -7,7 +7,6 @@ import logging
 from pyswip import Prolog
 import os
 
-
 def check_sw(message):
     os.system('python src/prolog_processor.py ' + message)
 

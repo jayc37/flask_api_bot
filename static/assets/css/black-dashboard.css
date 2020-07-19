@@ -1639,12 +1639,12 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #525f7f;
+  color: rgba(255, 255, 255, 0.8);
   background-color: transparent;
 }
-
 .table th,
 .table td {
+  font-size: 20px;
   padding: 1rem;
   vertical-align: top;
   border-top: 0.0625rem solid #e3e3e3;
@@ -1656,6 +1656,7 @@ pre code {
 }
 
 .table tbody+tbody {
+  font-size: 20px;
   border-top: 0.125rem solid #e3e3e3;
 }
 

@@ -1,2 +1,11 @@
-Name,Cases,Death,Recover,Treating,Dangerous
-Cần Thơ, 2, 0, 0, 2, 0
+BỆNH NHÂN, TÌNH TRẠNG, TUỔI,GIỚI TÍNH,BV ĐIỀU TRỊ, NƠI PHÁT HIỆN
+bn279, Đã xuất viện, 20, Nam, Bệnh viện Đa khoa Bạc Liêu, Bạc Liêu
+bn248, Đã xuất viện, 20, Nam, Bệnh viện Dã chiến Củ Chi, TP Hồ Chí Minh
+bn241, Đã xuất viện, 20, Nam, Bệnh viện Đa khoa Bạc Liêu, Bạc Liêu
+bn220, Đã xuất viện, 20, Nam, Bệnh viện Bệnh nhiệt đới Trung ương, Hà Nội
+bn129, Đã xuất viện, 20, Nam, Bệnh viện Bệnh nhiệt đới Trung ương, Hà Nội
+bn128, Đã xuất viện, 20, Nam, Bệnh viện Bệnh nhiệt đới Trung ương, Hà Nội
+bn95, Đã xuất viện, 20, Nam, Bệnh viện Dã chiến Củ Chi, TP Hồ Chí Minh
+bn93, Đã xuất viện, 20, Nam, Bệnh viện Bệnh nhiệt đới Trung ương, Hà Nội
+bn85, Đã xuất viện, 20, Nam, Bệnh viện Bệnh nhiệt đới Trung ương, Hà Nội
+bn81, Đã xuất viện, 20, Nam, Bệnh viện Dã chiến Củ Chi, TP Hồ Chí Minh

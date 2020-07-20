@@ -11,12 +11,15 @@ import os
 import sys
 
 class chartbig1():
+    """ đây là class lấy dữ liệu đổ vào chart"""
     def __init__(self):
         self.data = []
         self.datavietnam = []
         self.getdata()
         self.getdata_vietnam()
         self.format_data()
+
+
     def getdata(self):
         try:
             conn = mysql.connector.connect(host="labando.com",
@@ -42,6 +45,8 @@ class chartbig1():
         except mysql.connector.Error as error:
                         print("Failed to execute stored procedure: {}".format(error))
         self.datavietnam = datavietnam
+
+
     def format_data(self):
         datax = []
         data = self.data
@@ -64,7 +69,3 @@ class chartbig1():
             datay['VALUER'] = int(recover)
             datax.append(datay)
         return datax
-# a = 'c,toi,du,lieu,thong,ke,so,nguoi,nhiem,benh,o,ha,noi'
-# a = 'cho,toi,du,lieu,benh,nhan,20,tuoi'
-# # # # a = 'hello'
-# chartbig1()

@@ -27,8 +27,11 @@ def home():
     return render_template("index.html")
 @app.route("/getdata")
 def get_bot_response():
-    userText = str(request.args.get('data'))
-    message_chatbot = handle_response_code(userText)
-    return message_chatbot
+    try:
+        userText = str(request.args.get('data'))
+        message_chatbot = handle_response_code(userText)
+        return message_chatbot
+    except Exception as e:
+            logging.error('<file app.py>:' + str(e))
 if __name__ == "__main__":
   app.run(port=4000)

@@ -8,6 +8,7 @@ import mysql.connector
 
 def handle_response_code(message_chatbot):
         message = got_message(message_chatbot)
+        print(message_chatbot)
         response = check_sw(message)
         response = get_response()
         if 'Không hiểu.' in response:
@@ -30,9 +31,9 @@ def handle_response_code(message_chatbot):
         return response
     
 def got_message(message_chatbot):
+        print(message_chatbot)
         mes = ViUtils.remove_accents(message_chatbot)
         message = mes.decode()
-        message = re.sub('^,','',message)
         message = clean_message(message)
         return message.lower()
 
@@ -58,10 +59,11 @@ def format_datatk(data):
         return data
 
 def clean_message(mesages):
-        mesages = re.sub(r'[^A-Za-z0-9]',' ',mesages)
+        mesages = re.sub(r'[^a-zA-Z0-9]',' ',mesages)
         mesage = word_tokenize(mesages)
         mesage = ','.join(mesage)
-        return mesage
+        mesage = mesage.replace(' ',',')
+        return mesage.lower()
 
 def clean_string(resp):
         response = resp.replace('[','')

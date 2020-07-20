@@ -45,8 +45,14 @@ query(patients(Obj,Time)) -->w_x,noun_n,object_n(Obj),tg(Time).
 query(patients(Obj,Idbn)) -->object_n(Obj),idbn(Idbn).
 idbn(patients(Idbn,Ask)) --> ask(Ask),sohuu,noun_n,id_bn(Idbn).
 query(thongkevn(Obj,Tp)) --> w_x,noun_n,object_n(Obj),nguoinhiem,noichon,thanhpho(Tp).
-query(thongketg(Obj,Qg)) --> w_x,noun_n,object_n(Obj),nguoinhiem,noichon,qg(Qg).
+query(thongkevn(Obj,Tp)) --> thanhpho(Tp),howmany,howmany,object_n(Obj).
+query(thongkevn(Obj,Tp)) --> thanhpho(Tp),howmany,howmany,howmany,object_n(Obj).
+query(thongkevn(Obj,Tp)) --> noichon,thanhpho(Tp),howmany,howmany,object_n(Obj).
+query(thongkevn(Obj,Tp)) --> noichon,thanhpho(Tp),howmany,howmany,howmany,object_n(Obj).
+query(thongkevn(Obj,Tp)) --> thanhpho(Tp),howmany,object_n(Obj).
+query(thongkevn(Obj,Tp)) --> thanhpho(Tp),howmany,howmany,object_n(Obj),howmany.
 query(thongkevn(Obj,Tp)) --> noichon,thanhpho(Tp),howmany,object_n(Obj).
+query(thongketg(Obj,Qg)) --> w_x,noun_n,object_n(Obj),nguoinhiem,noichon,qg(Qg).
 query(thongketg(Obj,Qg)) --> noichon,qg(Qg),howmany,object_n(Obj).
 query(thongketg(Obj,Qg)) --> qg(Qg),howmany,howmany,object_n(Obj).
 query(thongketg(Obj,Qg)) --> qg(Qg),howmany,howmany,howmany,object_n(Obj).
@@ -663,6 +669,8 @@ country(india4)-->[india].
 country(russia3)-->[russia].
 country(brazil2)-->[brazil].
 country(usa1)-->[usa].
+country(usa1)-->[my].
+
 country(world0)-->[world].
 country(world0)-->[the,gioi].
 country(zaandam206)-->[ms,zaandam].
@@ -675,6 +683,7 @@ country(lesotho212)-->[lesotho].
 country(anguilla213)-->[anguilla].
 country(miquelon214)-->[saint,pierre,miquelon].
 country(china215)-->[china].
+country(china215)-->[chinese].
 
 
 

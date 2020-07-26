@@ -169,13 +169,12 @@ class check_sw():
             
     def clean_message(self,message):
         try:
-            print(message)
-            new_message = []  
+            new_message = []
             for i in range(len(message[0])):
                 x = message[0][i].replace(',','.')
                 new_message.append(x)
-                message.clear()
-                message.append(tuple(new_message))
+            message.clear()
+            message.append(tuple(new_message))
             return message
         except Exception as e:
             logging.error('file <prolog_processor.py> function <clean_message>:' + str(e))  

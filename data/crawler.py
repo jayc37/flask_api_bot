@@ -19,7 +19,7 @@ class crawler:
         database = "covidinfomation")
         self.cur = self.conn.cursor()
         # self.vietnamstatistic()
-        # self.vietnam_patients()
+        self.vietnam_patients()
         # self.thegioistatistic()
         self.get()
     def get_header(self,values):
@@ -92,12 +92,12 @@ class crawler:
                 vi = dab2[i]
                 if i < 31:
                     matp = self.get_id(vi[0],i)
-                    ngaycn = date.today()
+                    # ngaycn = date.today()
                     try:
-                       
-                        self.cur.callproc('proc_delete_dulieuthongkethegioi', '')
-                        args = (str(matp),str(vi[0]),'vietnam1','Việt Nam','dltkvn',str(ngaycn),str(vi[1]),str(vi[4]),str(vi[3]),str(vi[2]),'0','0','0','0')
-                        self.cur.callproc('proc_insert_dulieuthongkevietnam', args)
+                        args = (str(matp),str(vi[1]),str(vi[3]),str(vi[2]))
+                        self.cur.callproc('updatedulieuthongkevietnam', args)
+                        # args = (str(matp),str(vi[0]),'vietnam1','Việt Nam','dltkvn',str(ngaycn),str(vi[1]),str(vi[4]),str(vi[3]),str(vi[2]),'0','0','0','0')
+                        # self.cur.callproc('proc_insert_dulieuthongkevietnam', args)
                         #  proc_insert_dulieuthongkevietnam('matp', 'tentinhthanhpho', 'maquocgia', 'tenquocgia','madltk','2012-12-12',
                         # 'tongcases','tongdeath','tonghoiphuc','dangdieutri','dangnguykich','nhiemmoi','chetmoi','hoiphucmoi') 
                     except mysql.connector.Error as error:
@@ -106,7 +106,7 @@ class crawler:
                         if (self.conn.is_connected()):
                             # self.cur.close()
                             # self.conn.close()
-                            print("MySQL connection is closed")
+                            print("MySQL connection is closed" + (str(i)))
     def thegioistatistic(self):
         wiki = "https://www.worldometers.info/coronavirus/#countries"
         soup = self.get_header(wiki)
@@ -165,13 +165,12 @@ class crawler:
             for i in range(0,len(dab2)):
                 if i < 216:
                     vi = dab2[i]
-                    maqg = self.get_id(vi[0],i)
                     madltktg = self.get_id(vi[0],'dltk')
-                    ngaycn = date.today()
-                    
                     try:
-                        args = ('','',str(maqg),str(vi[0]),str(madltktg),str(ngaycn),str(vi[1]),str(vi[3]),str(vi[5]),str(vi[6]),str(vi[7]),str(vi[2]),str(vi[4]),'0')
-                        self.cur.callproc('proc_insert_dulieuthongkethegioi', args)
+                        #  args = ('','',str(maqg),str(vi[0]),str(madltktg),str(ngaycn),str(vi[1]),str(vi[3]),str(vi[5]),str(vi[6]),str(vi[7]),str(vi[2]),str(vi[4]),'0')
+                        # self.cur.callproc('proc_insert_dulieuthongkethegioi', args)
+                        args = (str(madltktg),str(vi[1]),str(vi[3]),str(vi[5]),str(vi[6]),str(vi[7]))
+                        self.cur.callproc('updatedulieuthongkethegioi', args)
                         #  proc_insert_dulieuthongkevietnam('matp', 'tentinhthanhpho', 'maquocgia', 'tenquocgia','madltk','2012-12-12',
                         # 'tongcases','tongdeath','tonghoiphuc','dangdieutri','dangnguykich','nhiemmoi','chetmoi','hoiphucmoi') 
                     except mysql.connector.Error as error:
@@ -180,7 +179,7 @@ class crawler:
                         if (self.conn.is_connected()):
                             # self.cur.close()
                             # self.conn.close()
-                            print("MySQL connection is closed")
+                            print("MySQL connection is closed" + str(i))
 
     def vietnam_patients(self):
         wiki = "https://vi.wikipedia.org/wiki/Bản_mẫu:Bảng_thông_tin_COVID-19_tại_Việt_Nam"
@@ -220,10 +219,11 @@ class crawler:
                                 # in some cases the colspan can overflow the table, in those cases just get the last item
                                 cell_n = min(cell_n, len(data[row_n])-1)
                                 data[row_n][cell_n] += cell.text
-
-
                     data.append(rowD)
                 dab2 = []
+
+
+
             for i in range(len(data)):
                 dab = []
                 for x in data[i]:
@@ -232,7 +232,7 @@ class crawler:
                     dab.append(x)
                 dab2.append(dab)
             for i in range(1,len(dab2)):
-                if i < 336:
+                if i > 333:
                     vi = dab2[i]
                     mabenhvien = self.getmabenhvien(vi[6],vi[4])
                     maloaibenhvien = self.getmaloaibenhvien(vi[6])
@@ -252,7 +252,7 @@ class crawler:
                         if (self.conn.is_connected()):
                             # self.cur.close()
                             # self.conn.close()
-                            print("MySQL connection is closed")
+                            print("MySQL connection is closed +" +str(mabn))
                             
     def got_khongdau(self,s):
         s = ViUtils.remove_accents(s)

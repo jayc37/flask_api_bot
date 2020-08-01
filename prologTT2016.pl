@@ -5,7 +5,7 @@ query(patients(Obj,Sex)) -->howmany,object_n(Obj),nhiem,iss,sexual(Sex).
 query(patients(Obj,Sex)) -->howmany,object_n(Obj),sexual(Sex),nhiem.
 query(patients(Obj,Sex)) -->w_x,noun_n,object_n(Obj),sexual(Sex),nhiem.
 query(patients(Obj,Sex)) -->w_x,howmany,object_n(Obj),nhiem,iss,sexual(Sex).
-
+cho tôi bệnh nhân của hà nội
 query(patients(Obj,Sex,Dotuoi)) -->w_x,noun_n,object_n(Obj),sexual(Sex),dotuoi(Dotuoi),age_b.
 query(patients(Obj,Sex,Dotuoi)) -->noun_n,object_n(Obj),sexual(Sex),dotuoi(Dotuoi),age_b.
 query(patients(Obj,Sex,Dotuoi)) -->w_x,noun_n,object_n(Obj),dotuoi(Dotuoi),age_b,iss,sexual(Sex).
@@ -27,7 +27,6 @@ query(patients(Obj,Sex,Tinhtrang)) -->noun_n,object_n(Obj),sexual(Sex),tt(Tinhtr
 query(patients(Obj,Sex,Tinhtrang,Tp)) -->w_x,noun_n,object_n(Obj),sexual(Sex),tt(Tinhtrang),noichon,thanhpho(Tp).
 
 query(patients(Obj,Tp)) -->w_x,noun_n,object_n(Obj),noichon,thanhpho(Tp).
-
 query(patients(Obj,Tp,Tinhtrang)) -->w_x,noun_n,object_n(Obj),noichon,thanhpho(Tp),tt(Tinhtrang).
 query(patients(Obj,Tp,Tinhtrang)) -->noun_n,object_n(Obj),noichon,thanhpho(Tp),tt(Tinhtrang).
 
@@ -882,6 +881,7 @@ b --> [den].
 noichon --> [o].
 noichon --> [tai].
 noichon --> [tren].
+noichon --> [cua].
 why --> [tai,sao].
 sohuu -->[cua].
 nguoinhiem --> nguoi,nhiem.

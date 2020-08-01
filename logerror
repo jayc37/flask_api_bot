@@ -1,0 +1,1 @@
+file <prolog_processor.py> function <writeonfile>:write() argument must be str, not None

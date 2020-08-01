@@ -5,3 +5,5 @@ Scripts
 *.cfg
 prologtt2016.pl~
 package-lock.json
+*.vs
+*.vscode
